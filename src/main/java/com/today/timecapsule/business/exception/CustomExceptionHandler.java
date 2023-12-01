@@ -18,14 +18,6 @@ public class CustomExceptionHandler {
         return customException;
     }
 
-    @ExceptionHandler(UserNameOrPasswordNotExistsException.class)
-    @ResponseStatus(HttpStatus.NOT_FOUND)
-    public CustomException handleUserNameOrPasswordNotExistsException(UserNameOrPasswordNotExistsException ex) {
-        CustomException customException = new CustomException();
-        customException.setMsg(ex.getMsg());
-        customException.setStatus(ex.getStatus());
-        return customException;
-    }
 
 }
 

@@ -1,5 +1,9 @@
 package com.today.timecapsule.business.service;
 
-public interface AccountService {
+import com.fasterxml.jackson.databind.JsonNode;
+
+public interface HistoryService {
+
+    JsonNode getHistoryOfDay() throws Exception;
 
 }
