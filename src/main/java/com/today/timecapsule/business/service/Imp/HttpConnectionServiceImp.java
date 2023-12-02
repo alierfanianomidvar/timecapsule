@@ -14,17 +14,19 @@ import java.util.List;
 @Service
 public class HttpConnectionServiceImp implements HttpConnectionService {
     @Override
-    public JsonNode get(String url) {
+    public JsonNode get(String url, Boolean typeOfUr) {
 
 
         RestTemplate restTemplate = new RestTemplate();
         //ResponseEntity<JsonNode> response = restTemplate.getForEntity(url, JsonNode.class);
-
         HttpHeaders httpHeaders = new HttpHeaders();
-        httpHeaders.set("X-Api-Key", "IBfNeqbpdJKd0FnLqhdu0g==gA6HvF9MTHv6uT7V");
         httpHeaders.set("accept", "application/json");
-        HttpEntity<String> entity = new HttpEntity<>(httpHeaders);
 
+        if( typeOfUr ) {
+            httpHeaders.set("X-Api-Key", "IBfNeqbpdJKd0FnLqhdu0g==gA6HvF9MTHv6uT7V");
+        }
+
+        HttpEntity<String> entity = new HttpEntity<>(httpHeaders);
         ResponseEntity<JsonNode> response = restTemplate.exchange(url, HttpMethod.GET, entity, JsonNode.class);
 
         JsonNode root = response.getBody();

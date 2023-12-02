@@ -5,6 +5,7 @@ import com.fasterxml.jackson.databind.JsonNode;
 public interface HttpConnectionService {
 
     JsonNode get(
-            String url
+            String url,
+            Boolean typeOfUrl
     );
 }

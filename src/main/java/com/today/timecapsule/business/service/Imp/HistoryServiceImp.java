@@ -27,7 +27,7 @@ public class HistoryServiceImp implements HistoryService {
             String url = "https://api.api-ninjas.com/v1/historicalevents?text=" + query +
                     "&month=" + currentMonth + "&day=" + currentDay;
 
-            JsonNode res = httpConnectionService.get(url);
+            JsonNode res = httpConnectionService.get(url, true);
 
             return res;
         } catch (Exception e) {
