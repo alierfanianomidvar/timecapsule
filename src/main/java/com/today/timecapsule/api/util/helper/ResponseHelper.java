@@ -2,7 +2,7 @@ package com.today.timecapsule.api.util.helper;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.unipd.semicolon.api.util.ResponseStructure;
+import com.today.timecapsule.api.util.ResponseStructure;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
