@@ -22,7 +22,9 @@ public class PublicHolidaysServiceImp implements PublicHolidaysService {
 
        // String url = "https://date.nager.at/Api/v2/PublicHolidays/" + year + "/" + country.toUpperCase();
         String apiKey = "CGjlTkoDWK0egDHPuOpPMJdFHxyWOvph";  // Replace with your actual API key
-        String url = "https://calendarific.com/api/v2/holidays?&api_key=CGjlTkoDWK0egDHPuOpPMJdFHxyWOvph&country=IT&year=2023";
+        String url = "https://calendarific.com/api/v2/holidays?&api_key=CGjlTkoDWK0egDHPuOpPMJdFHxyWOvph&country="
+                + country.toUpperCase()
+                + "&year=" + year;
         return httpConnectionService.get(url, false);
     }
 }
