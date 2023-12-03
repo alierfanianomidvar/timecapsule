@@ -9,6 +9,7 @@ import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
 @RestController
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 @RequestMapping(value = "/holidays")
@@ -17,12 +18,14 @@ public class HolidaysController {
     @Autowired
     private PublicHolidaysService publicHolidaysService;
 
-    @RequestMapping(value = "", method = RequestMethod.GET)
+    @RequestMapping(value = "/{country}/{year}", method = RequestMethod.GET)
     @Operation(summary = "holidays", description = "getting the list of holidays of year base on the location.")
-    public ResponseEntity holidays()
-            throws Exception {
-        publicHolidaysService.getHolidays();
-        return ResponseHelper.response(true);
+    public ResponseEntity holidays(
+            @PathVariable("country") String country,
+            @PathVariable("year") String year
+    ) throws Exception {
+
+        return ResponseHelper.response(publicHolidaysService.getHolidays(country, year));
     }
 
 }
