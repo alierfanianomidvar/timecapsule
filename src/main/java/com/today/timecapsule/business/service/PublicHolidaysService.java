@@ -1,6 +1,11 @@
 package com.today.timecapsule.business.service;
 
+import com.fasterxml.jackson.databind.JsonNode;
+
 public interface PublicHolidaysService {
 
-    void getHolidays();
+    JsonNode getHolidays(
+            String country,
+            String year
+    );
 }

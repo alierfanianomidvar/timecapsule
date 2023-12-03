@@ -13,11 +13,16 @@ public class PublicHolidaysServiceImp implements PublicHolidaysService {
 
     @Autowired
     private HttpConnectionService httpConnectionService;
-    @Override
-    public void getHolidays() {
-        String url ="https://date.nager.at/Api/v2/PublicHolidays/2023/US";
-        JsonNode node = httpConnectionService.get(url, false);
 
-        System.out.println("this is the res - > " + node);
+    @Override
+    public JsonNode getHolidays(
+            String country,
+            String year
+    ) {
+
+       // String url = "https://date.nager.at/Api/v2/PublicHolidays/" + year + "/" + country.toUpperCase();
+        String apiKey = "CGjlTkoDWK0egDHPuOpPMJdFHxyWOvph";  // Replace with your actual API key
+        String url = "https://calendarific.com/api/v2/holidays?&api_key=CGjlTkoDWK0egDHPuOpPMJdFHxyWOvph&country=IT&year=2023";
+        return httpConnectionService.get(url, false);
     }
 }
