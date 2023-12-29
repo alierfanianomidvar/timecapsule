@@ -2,9 +2,6 @@ package com.today.timecapsule.api.controller;
 
 
 import com.today.timecapsule.api.util.helper.ResponseHelper;
-import com.today.timecapsule.business.exception.CustomException;
-import com.today.timecapsule.business.service.HistoryService;
-import com.today.timecapsule.business.service.NewsService;
 import com.today.timecapsule.business.service.WeatherService;
 import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,13 +15,14 @@ public class  WeatherController {
     @Autowired
     private WeatherService weatherService;
 
-    @RequestMapping(value = "{l}", method = RequestMethod.GET)
-    @Operation(summary = "Weather", description = "getting the Weather of next 5 days.")
-    public ResponseEntity Weather(
-            @PathVariable("l") String l
+    @RequestMapping(value = "/{lat}/{lon}", method = RequestMethod.GET)
+    @Operation(summary = "weather", description = "getting the weather of next 5 days.")
+    public ResponseEntity weather(
+            @PathVariable("lat") String lat,
+            @PathVariable("lon") String lon
     )
             throws Exception {
-        return ResponseHelper.response(weatherService.getSevenDayForecast(l));
+        return ResponseHelper.response(weatherService.getSevenDayForecast(lat, lon));
     }
 
 }

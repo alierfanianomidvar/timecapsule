@@ -7,5 +7,5 @@ import java.util.List;
 
 public interface WeatherService {
 
-    List<WeatherDto> getSevenDayForecast(String location);
+    List<WeatherDto> getSevenDayForecast(String lat, String lon);
 }

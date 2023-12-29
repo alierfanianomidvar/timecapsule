@@ -16,10 +16,12 @@ public class WeatherServiceImp implements WeatherService {
     private HttpConnectionService httpConnectionService;
 
     @Override
-    public List<WeatherDto> getSevenDayForecast(String location) {
+    public List<WeatherDto> getSevenDayForecast(String lat, String lon) {
 
         final String API_KEY = "9446c4bb421e9e42b9de13a4ef9d2da5"; // Replace with your API key
-        final String BASE_URL = "https://api.openweathermap.org/data/2.5/forecast?lat=44.34&lon=10.99&appid=" + API_KEY;
+        final String BASE_URL = "https://api.openweathermap.org/data/2.5/forecast?lat="+ lat +
+                "&lon=" + lon + "&appid=" + API_KEY;
+
         JsonNode jsonNode = httpConnectionService.get(BASE_URL, false);
 
         JsonNode path = jsonNode.path("list");
