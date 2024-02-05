@@ -7,6 +7,7 @@ import com.today.timecapsule.business.service.HistoryService;
 import com.today.timecapsule.business.service.PublicHolidaysService;
 import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,8 +16,11 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping(value = "/holidays")
 public class HolidaysController {
 
+    private final PublicHolidaysService publicHolidaysService;
     @Autowired
-    private PublicHolidaysService publicHolidaysService;
+    public HolidaysController(@Qualifier("publicHolidaysServiceImp")PublicHolidaysService thePublicHolidaysService){
+        publicHolidaysService = thePublicHolidaysService;
+    }
 
     @RequestMapping(value = "/{country}/{year}", method = RequestMethod.GET)
     @Operation(summary = "holidays", description = "getting the list of holidays of year base on the location.")
